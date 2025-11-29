@@ -1,0 +1,36 @@
+# IDEA files
+.idea/
+
+# VS Code files
+.vscode/
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+venv/
+
+# Byte-compiled / optimized / DLL / files
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Files
+.env
+.env_dev
+temp.py
+temp.json
+
+# MD files
+CHECKLIST.md
+DOCUMENTATION.md
+QUICK_START.md
+README.md
+SUMMARY.md
+WARP.md
