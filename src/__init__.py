@@ -1,3 +1,0 @@
-"""
-API Testing Project - Configuration
-"""
