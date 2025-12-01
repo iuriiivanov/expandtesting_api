@@ -11,6 +11,7 @@ dependencies = [
     "pydantic[email]>=2.0.0",
     "allure-pytest>=2.13.0",
     "python-dotenv>=1.0.0",
+    "pysonar>=1.2.1.3951",
 ]
 
 [dependency-groups]
