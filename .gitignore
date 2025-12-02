@@ -24,6 +24,10 @@ venv/
 .mypy_cache/
 .ruff_cache/
 
+# Allure files
+allure-results/
+allure-reports/
+
 # Files
 .env
 .env_dev
