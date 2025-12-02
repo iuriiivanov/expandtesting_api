@@ -1,11 +1,10 @@
 import httpx
 import pytest
 
-from config.config import Config as C
+API_BASE_URL = "https://practice.expandtesting.com/notes/api"
 
 
-@pytest.fixture(scope="session")
-def health_check() -> bool:
-    response = httpx.get(url=f"{C.API_BASE_URL}/{C.HEALTH_CHECK_ENDPOINT}")
-
-    return response.status_code == 200
+@pytest.fixture(autouse=True, scope="session")
+def health_check() -> None:
+    response = httpx.get(url=f"{API_BASE_URL}/health-check")
+    assert response.status_code == 200
