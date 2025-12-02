@@ -1,4 +1,4 @@
-API_BASE_URL = "https://practice.expandtesting.com/notes/api"
+from config.config import API_BASE_URL
 
 
 class Endpoints:
