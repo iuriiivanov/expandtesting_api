@@ -87,16 +87,17 @@ select = [
     "FURB",  # refurb
 ]
 ignore = [
-    "C408",  # Ненужный вызов dict, list и т.д.
+    "C408",  # Unnecessary {kind}() call (rewrite as a literal)
     "D100",  # Missing docstring in public module
     "D101",  # Missing docstring in public class
     "D102",  # Missing docstring in public method
     "D103",  # Missing docstring in public function
-    "RUF001",  # Игнорирование похожих символов с разными ASCII
-    "RUF002",  # Игнорирование похожих символов с разными ASCII
-    "RUF003",  # Игнорирование похожих символов с разными ASCII
-    "S110",  # try-except-pass
-    "E501",  # line-too-long
+    "RUF001",  # String contains ambiguous {}. Did you mean {}?
+    "RUF002",  # Docstring contains ambiguous {}. Did you mean {}?
+    "RUF003",  # Comment contains ambiguous {}. Did you mean {}?
+    "S110",  # try-except-pass detected, consider logging the exception
+    "E501",  # Line too long ({width} > {limit})
+    "S101",  # Use of assert detected
 ]
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 exclude = [
@@ -129,7 +130,7 @@ exclude = [
     "tests/**",
 ]
 fixable = [
-    "I",  # сортировка импортов
+    "I",  # Import sorting
 ]
 
 [tool.ruff.format]
