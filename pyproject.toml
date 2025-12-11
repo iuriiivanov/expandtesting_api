@@ -26,12 +26,17 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+cache_dir = ".venv/.cache/pytest_cache"
 addopts = [
     "-v",
+    "-ra",
     "--tb=short",
     "--strict-markers",
     "--disable-warnings",
-]
+    "--cache-clear",
+    "--showlocals",
+    "--setup-show",
+]        
 markers = [
     "smoke: marks tests as smoke tests",
     "regression: marks tests as regression tests",
