@@ -15,7 +15,7 @@ class Notes(Helper):
         self.endpoints = Endpoints()
         self.headers = Headers()
 
-    @allure.step("Create note")
+    @allure.step("Create a new note")
     def create_note(self) -> NoteModel:
         response = httpx.post(
             url=self.endpoints.create_note,
@@ -35,9 +35,21 @@ class Notes(Helper):
         model = NotesModel(**response.json())
         return model
 
-    @allure.step("Get note by ID")
+    @allure.step("Get a note by ID")
     def get_note_by_id(self, id: str) -> NoteModel:
         response = httpx.get(url=self.endpoints.get_note_by_id(id), headers=self.headers.auth)
+        assert response.status_code == 200, f"Something goes wrong!\n {response.json()}"
+        self.attach_response(response.json())
+        model = NoteModel(**response.json())
+        return model
+
+    @allure.step("Update an existing note")
+    def update_existing_note(self, id: str) -> NoteModel:
+        response = httpx.put(
+            url=self.endpoints.update_existing_note(id),
+            headers=self.headers.auth,
+            json=self.payloads.update_existing_note,
+        )
         assert response.status_code == 200, f"Something goes wrong!\n {response.json()}"
         self.attach_response(response.json())
         model = NoteModel(**response.json())
