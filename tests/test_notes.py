@@ -14,3 +14,8 @@ class TestNotes(BaseTest):
     def test_create_note(self) -> None:
         note = self.api_notes.create_note()
         self.api_notes.get_note_by_id(note.data.id)
+
+    @pytest.mark.regression
+    @allure.title("Get all notes")
+    def test_get_all_notes(self) -> None:
+        self.api_notes.get_all_notes()

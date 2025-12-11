@@ -95,6 +95,7 @@ ignore = [
     "RUF001",  # Игнорирование похожих символов с разными ASCII
     "RUF002",  # Игнорирование похожих символов с разными ASCII
     "RUF003",  # Игнорирование похожих символов с разными ASCII
+    "S101",  # Checks for uses of the assert keyword
     "S110",  # try-except-pass
     "E501",  # line-too-long
 ]
@@ -129,7 +130,7 @@ exclude = [
     "tests/**",
 ]
 fixable = [
-    "I",  # сортировка импортов
+    "I",  # Import sorting
 ]
 
 [tool.ruff.format]

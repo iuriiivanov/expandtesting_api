@@ -1,4 +1,4 @@
-from apis.notes.api import Notes
+from apis.notes.api_client import Notes
 
 
 class BaseTest:
