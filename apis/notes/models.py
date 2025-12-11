@@ -49,3 +49,30 @@ class NotesModel(BaseModel):
             raise ValueError("The field is empty!")
         else:
             return value
+
+
+class NoteDeletedModel(BaseModel):
+    success: bool
+    status: int
+    message: str
+
+    @field_validator("success")
+    def success_status(cls, value: bool) -> bool:
+        if not value or value is None:
+            raise ValueError("Wrong success status!")
+        else:
+            return value
+
+    @field_validator("status")
+    def success_status_code(cls, value: int) -> int:
+        if value != 200 or value is None:
+            raise ValueError("Wrong success status code!")
+        else:
+            return value
+
+    @field_validator("message")
+    def success_message(cls, value: str) -> str:
+        if value != "Note successfully deleted" or value is None:
+            raise ValueError("Wrong success message!")
+        else:
+            return value
