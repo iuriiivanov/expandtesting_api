@@ -4,7 +4,7 @@ from config.headers import Headers
 from utils.helper import Helper
 
 from apis.notes.endpoints import Endpoints
-from apis.notes.models.model import NotesModel
+from apis.notes.models import NotesModel
 from apis.notes.payloads import Payloads
 
 

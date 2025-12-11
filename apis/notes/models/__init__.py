@@ -1,3 +1,0 @@
-"""
-Notes Models Package
-"""
