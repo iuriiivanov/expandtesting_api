@@ -13,6 +13,15 @@ class NoteData(BaseModel):
     category: str
     user_id: str
 
+    @field_validator(
+        "id", "title", "description", "completed", "created_at", "updated_at", "category", "user_id"
+    )
+    def fields_are_not_empty(cls, value: Any) -> Any:
+        if value == "" or value is None:
+            raise ValueError("The field is empty!")
+        else:
+            return value
+
 
 class NoteModel(BaseModel):
     success: bool
