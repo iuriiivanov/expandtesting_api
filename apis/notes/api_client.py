@@ -57,7 +57,7 @@ class Notes(Helper):
 
     @allure.step("Delete a note by ID")
     def delete_note_by_id(self, id: str) -> NoteDeletedModel:
-        response = httpx.get(url=self.endpoints.delete_note_by_id(id), headers=self.headers.auth)
+        response = httpx.delete(url=self.endpoints.delete_note_by_id(id), headers=self.headers.auth)
         assert response.status_code == 200, f"Something goes wrong!\n {response.json()}"
         self.attach_response(response.json())
         model = NoteDeletedModel(**response.json())
