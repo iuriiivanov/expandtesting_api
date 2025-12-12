@@ -86,4 +86,4 @@ class Notes(Helper):
         for item in notes["data"]:
             ids.append(item["id"])
 
-        return str(random.choice(ids))
+        return str(random.choice(ids))  # noqa: S311
