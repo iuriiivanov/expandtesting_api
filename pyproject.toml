@@ -26,12 +26,18 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+cache_dir = ".venv/.cache/pytest_cache"
 addopts = [
     "-v",
+    "-ra",
     "--tb=short",
     "--strict-markers",
     "--disable-warnings",
-]
+    "--cache-clear",
+    "--showlocals",
+    "--setup-show",
+    # "--alluredir=allure-results"
+]        
 markers = [
     "smoke: marks tests as smoke tests",
     "regression: marks tests as regression tests",
@@ -46,13 +52,24 @@ python_version = "3.13"
 warn_return_any = true
 warn_unused_configs = true
 warn_unused_ignores = true
+warn_redundant_casts = true
 check_untyped_defs = true
+disallow_incomplete_defs = true
 disallow_untyped_defs = true
+disallow_untyped_calls = false
+disallow_untyped_decorators = false
 disallow_any_unimported = true
+disallow_subclassing_any = true
+disallow_any_generics = true
+follow_imports = "silent"
 ignore_missing_imports = true
 strict_optional = true
+strict_equality = true
 no_implicit_optional = true
+no_implicit_reexport = true
 show_error_codes = true
+show_error_context = true
+show_column_numbers = true
 cache_dir = ".venv/.cache/mypy_cache"
 exclude = ["^\\.venv/"]
 
@@ -130,6 +147,7 @@ exclude = [
     "tests/**",
 ]
 fixable = [
+    "I",  # Import sorting
     "I",  # Import sorting
 ]
 
