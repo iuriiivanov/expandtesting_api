@@ -65,6 +65,30 @@ class Notes(Helper):
         model = NoteModel(**response.json())
         return model
 
+    @allure.step("Change the completed status to True")
+    def change_completed_status_to_true(self, id: str) -> None:
+        response = httpx.patch(
+            url=self.endpoints.update_completed_status_of_note(id),
+            headers=self.headers.auth,
+            json=self.payloads.change_completed_status_to_true,
+        )
+        assert response.status_code == 200, f"Something goes wrong!\n {response.json()}"
+        self.attach_response(response.json())
+        status = self.get_note_by_id(id).model_dump()["data"]["completed"]
+        assert status, f"Something goes wrong!\nCompleted status is {status}"
+
+    @allure.step("Change the completed status to False")
+    def change_completed_status_to_false(self, id: str) -> None:
+        response = httpx.patch(
+            url=self.endpoints.update_completed_status_of_note(id),
+            headers=self.headers.auth,
+            json=self.payloads.change_completed_status_to_false,
+        )
+        assert response.status_code == 200, f"Something goes wrong!\n {response.json()}"
+        self.attach_response(response.json())
+        status = self.get_note_by_id(id).model_dump()["data"]["completed"]
+        assert not status, f"Something goes wrong!\nCompleted status is {status}"
+
     @allure.step("Delete a note by ID")
     def delete_note_by_id(self, id: str) -> DeleteNote200Model:
         response = httpx.delete(url=self.endpoints.delete_note_by_id(id), headers=self.headers.auth)
