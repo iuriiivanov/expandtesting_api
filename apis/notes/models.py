@@ -37,7 +37,7 @@ class NoteModel(BaseModel):
             return value
 
 
-class NoteNotFoundModel(BaseModel):
+class Note404Model(BaseModel):
     success: bool
     status: int
     message: str
@@ -78,7 +78,7 @@ class NotesModel(BaseModel):
             return value
 
 
-class DeleteNoteSuccessfulRequestModel(BaseModel):
+class DeleteNote200Model(BaseModel):
     success: bool
     status: int
     message: str
@@ -105,7 +105,7 @@ class DeleteNoteSuccessfulRequestModel(BaseModel):
             return value
 
 
-class DeleteNoteBadRequestModel(BaseModel):
+class DeleteNote400Model(BaseModel):
     success: bool
     status: int
     message: str
