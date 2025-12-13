@@ -22,6 +22,13 @@ class TestNotes(BaseTest):
         self.api_notes.get_all_notes()
 
     @pytest.mark.regression
+    @allure.title("Update the completed status of the note")
+    def test_update_completed_status_of_note(self) -> None:
+        id = self.api_notes.create_note().model_dump()["data"]["id"]
+        self.api_notes.change_completed_status_to_true(id)
+        self.api_notes.change_completed_status_to_false(id)
+
+    @pytest.mark.regression
     @allure.title("Delete a note by ID")
     def test_delete_note_by_id(self) -> None:
         note_id = self.api_notes.get_random_note_id()
