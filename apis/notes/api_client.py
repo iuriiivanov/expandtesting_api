@@ -6,7 +6,7 @@ from config.headers import Headers
 from utils.tools import Helper
 
 from apis.notes.endpoints import Endpoints
-from apis.notes.models import DeleteNote200Model, Note404Model, NoteModel, NotesModel
+from apis.notes.models import DeleteNote200Model, Note404Model, NoteDataModel, NoteModel, NotesModel
 from apis.notes.payloads import Payloads
 
 
@@ -136,3 +136,10 @@ class Notes(Helper):
         notes = self.get_all_notes().model_dump()
         assert notes, f"Note list is not empty!\n{notes}"
         self.attach_value(f"IDs of the deleted notes:\n{ids}")
+
+    @allure.step("Verify note data")
+    def verify_note_data(self, created_note: NoteDataModel, recieved_note: NoteDataModel) -> None:
+        assert created_note == recieved_note, (
+            f"Data doesn't match!\nCreated note:\n{created_note}\n\nRecieved note:\n{recieved_note}"
+        )
+        self.attach_value(f"Created note:\n{created_note}\n\nRecieved note:\n{recieved_note}")
