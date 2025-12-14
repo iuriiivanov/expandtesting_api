@@ -29,6 +29,12 @@ class TestNotes(BaseTest):
         self.api_notes.verify_note_data(note_created.data, note_recieved.data)
 
     @pytest.mark.regression
+    @allure.title("Get a note by ID (404)")
+    def test_get_note_by_id_404(self) -> None:
+        id = self.api_notes.generate_note_id()
+        self.api_notes.get_note_by_id_404(id)
+
+    @pytest.mark.regression
     @allure.title("Update the completed status of the note")
     def test_update_completed_status_of_note(self) -> None:
         note = self.api_notes.create_note()

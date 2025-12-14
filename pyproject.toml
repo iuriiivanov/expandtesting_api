@@ -37,7 +37,7 @@ addopts = [
     "--showlocals",
     "--setup-show",
     # "--alluredir=allure-results"
-]        
+]
 markers = [
     "smoke: marks tests as smoke tests",
     "regression: marks tests as regression tests",
