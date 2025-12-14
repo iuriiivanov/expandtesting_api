@@ -3,7 +3,7 @@ from typing import Any
 from pydantic import BaseModel, field_validator
 
 
-class NoteData(BaseModel):
+class NoteDataModel(BaseModel):
     id: str
     title: str
     description: str
@@ -27,7 +27,7 @@ class NoteModel(BaseModel):
     success: bool
     status: int
     message: str
-    data: NoteData
+    data: NoteDataModel
 
     @field_validator("success", "status", "message")
     def fields_are_not_empty(cls, value: Any) -> Any:
@@ -68,7 +68,7 @@ class NotesModel(BaseModel):
     success: bool
     status: int
     message: str
-    data: list[NoteData] | None
+    data: list[NoteDataModel] | None
 
     @field_validator("success", "status", "message")
     def fields_are_not_empty(cls, value: Any) -> Any:
