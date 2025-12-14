@@ -47,3 +47,8 @@ class TestNotes(BaseTest):
     def test_delete_note_by_id_404(self) -> None:
         id = self.api_notes.generate_note_id()
         self.api_notes.delete_note_by_id_404(id)
+
+    @pytest.mark.regression
+    @allure.title("Delete all note")
+    def test_delete_all_notes(self) -> None:
+        self.api_notes.delete_all_notes()
