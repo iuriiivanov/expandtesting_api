@@ -38,7 +38,6 @@ class TestNotes(BaseTest):
     @allure.title("Update an existing note")
     def test_update_note(self) -> None:
         note = self.api_notes.create_note()
-        self.api_notes.change_completed_status_to_true(note.data.id)
         note_updated = self.api_notes.update_note(note.data.id)
         note_received = self.api_notes.get_note_by_id(note.data.id)
         self.api_notes.verify_note_data(note_updated.data, note_received.data)
