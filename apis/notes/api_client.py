@@ -54,7 +54,7 @@ class Notes(Helper):
         return model
 
     @allure.step("Update an existing note")
-    def update_existing_note(self, id: str) -> NoteModel:
+    def update_note(self, id: str) -> NoteModel:
         response = httpx.put(
             url=self.endpoints.update_existing_note(id),
             headers=self.headers.auth,
@@ -138,8 +138,8 @@ class Notes(Helper):
         self.attach_value(f"IDs of the deleted notes:\n{ids}")
 
     @allure.step("Verify note data")
-    def verify_note_data(self, created_note: NoteDataModel, recieved_note: NoteDataModel) -> None:
-        assert created_note == recieved_note, (
-            f"Data doesn't match!\nCreated note:\n{created_note}\n\nRecieved note:\n{recieved_note}"
+    def verify_note_data(self, created_note: NoteDataModel, received_note: NoteDataModel) -> None:
+        assert created_note == received_note, (
+            f"Data doesn't match!\nCreated note:\n{created_note}\n\nReceived note:\n{received_note}"
         )
-        self.attach_value(f"Created note:\n{created_note}\n\nRecieved note:\n{recieved_note}")
+        self.attach_value(f"Created note:\n{created_note}\n\nReceived note:\n{received_note}")
