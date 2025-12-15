@@ -85,10 +85,10 @@ select = [
     "UP",  # pyupgrade
     "I",  # isort
     "E",  # flake8-errors
-    "E4",
-    "E7",
-    "E9",
-    "F",
+    # "E4",  # pycodestyle multiple-imports errors
+    # "E7",  # pycodestyle errors
+    # "E902",  # pycodestyle io-error
+    "F",  # Pyflakes warnings
     "W",  # flake8-warnings
     "F",  # flake8-pyflakes
     "B",  # flake8-bugbear
