@@ -35,7 +35,7 @@ addopts = [
     "--disable-warnings",
     "--cache-clear",
     "--showlocals",
-    "--setup-show",
+    # "--setup-show",
     # "--alluredir=allure-results"
 ]
 markers = [
@@ -43,9 +43,6 @@ markers = [
     "regression: marks tests as regression tests",
     "integration: marks tests as integration tests",
 ]
-
-[tool.coverage.run]
-source = ["src"]
 
 [tool.mypy]
 python_version = "3.13"
