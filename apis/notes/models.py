@@ -1,6 +1,6 @@
 from typing import Any
 
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, Field, field_validator
 
 
 class NoteDataModel(BaseModel):
@@ -13,8 +13,15 @@ class NoteDataModel(BaseModel):
     category: str
     user_id: str
 
+    @field_validator("id")
+    def id_has_correct_length(cls, value: str) -> str:
+        if len(value) != 24 or not set(value).issubset("0123456789abcdef"):
+            raise ValueError("Note ID must be a valid ID")
+        else:
+            return value
+
     @field_validator(
-        "id", "title", "description", "completed", "created_at", "updated_at", "category", "user_id"
+        "title", "description", "completed", "created_at", "updated_at", "category", "user_id"
     )
     def fields_are_not_empty(cls, value: Any) -> Any:
         if value == "" or value is None:
@@ -24,7 +31,7 @@ class NoteDataModel(BaseModel):
 
 
 class NoteModel(BaseModel):
-    success: bool
+    success: bool = True | False
     status: int
     message: str
     data: NoteDataModel
