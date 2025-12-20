@@ -1,33 +1,33 @@
+from datetime import datetime
 from typing import Any
 
 from pydantic import BaseModel, Field, field_validator
 
 
 class NoteDataModel(BaseModel):
-    id: str
-    title: str
-    description: str
-    completed: bool
-    created_at: str
-    updated_at: str
-    category: str
-    user_id: str
-
-    @field_validator("id")
-    def id_has_correct_length(cls, value: str) -> str:
-        if len(value) != 24 or not set(value).issubset("0123456789abcdef"):
-            raise ValueError("Note ID must be a valid ID")
-        else:
-            return value
-
-    @field_validator(
-        "title", "description", "completed", "created_at", "updated_at", "category", "user_id"
+    id: str = Field(
+        ...,
+        description="The Node ID must be 24 characters long and consist only of characters from the set: '0123456789abcdef'",
+        pattern=r"^[a-f0-9]{24}$",
     )
-    def fields_are_not_empty(cls, value: Any) -> Any:
-        if value == "" or value is None:
-            raise ValueError("The field is empty!")
-        else:
-            return value
+    title: str = Field(
+        ..., min_length=4, max_length=100, description="Title must be between 4 and 100 characters"
+    )
+    description: str = Field(
+        ...,
+        min_length=4,
+        max_length=1000,
+        description="Description must be between 4 and 1000 characters",
+    )
+    completed: bool = Field(..., description="The completed status must be True or False only")
+    created_at: datetime = Field(..., description="Timestamp muct be in ISO 8601 format")
+    updated_at: datetime = Field(..., description="Timestamp must be in ISO 8601 format")
+    category: str = Field(
+        ...,
+        pattern=r"^(Home|Work|Personal)$",
+        description="Category must be one of: Home, Work, Personal",
+    )
+    user_id: str = Field(..., description="Note ID", pattern=r"^[a-f0-9]{24}$")
 
 
 class NoteModel(BaseModel):
