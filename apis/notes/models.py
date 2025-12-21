@@ -1,47 +1,75 @@
 from datetime import datetime
-from typing import Any
+from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, BeforeValidator, Field, field_validator
 
-
-class NoteDataModel(BaseModel):
-    id: str = Field(
+StatusInt = Annotated[
+    int,
+    Field(
         ...,
-        description="The Node ID must be 24 characters long and consist only of characters from the set: '0123456789abcdef'",
+        pattern=r"^(200|400|401|404|500)$",
+        description="Status must be one of: 200, 400, 401, 404, 500",
+    ),
+]
+
+MessageStr = Annotated[str, Field(..., description="Note status message")]
+
+IdHex = Annotated[
+    str,
+    Field(
+        ...,
+        description="The ID must be 24 characters long and consist only of hexadecimal characters",
         pattern=r"^[a-f0-9]{24}$",
-    )
-    title: str = Field(
+    ),
+]
+
+TitleStr = Annotated[
+    str,
+    Field(
         ..., min_length=4, max_length=100, description="Title must be between 4 and 100 characters"
-    )
-    description: str = Field(
+    ),
+]
+
+DescriptionStr = Annotated[
+    str,
+    Field(
         ...,
         min_length=4,
         max_length=1000,
         description="Description must be between 4 and 1000 characters",
-    )
-    completed: bool = Field(..., description="The completed status must be True or False only")
-    created_at: datetime = Field(..., description="Timestamp muct be in ISO 8601 format")
-    updated_at: datetime = Field(..., description="Timestamp must be in ISO 8601 format")
-    category: str = Field(
-        ...,
-        pattern=r"^(Home|Work|Personal)$",
-        description="Category must be one of: Home, Work, Personal",
-    )
-    user_id: str = Field(..., description="Note ID", pattern=r"^[a-f0-9]{24}$")
+    ),
+]
+
+SuccessBool = Annotated[bool, Field(..., description="This status must be True or False only")]
+
+DatetimeIso = Annotated[
+    datetime,
+    Field(..., description="Timestamp must be in ISO 8601 format"),
+    BeforeValidator(lambda x: datetime.fromisoformat(x) if isinstance(x, str) else x),
+]
+
+CategoryType = Annotated[
+    Literal["Home", "Work", "Personal"],
+    Field(..., description="Category must be one of: Home, Work, Personal"),
+]
+
+
+class NoteDataModel(BaseModel):
+    id: IdHex
+    title: TitleStr
+    description: DescriptionStr
+    completed: SuccessBool
+    created_at: DatetimeIso
+    updated_at: DatetimeIso
+    category: CategoryType
+    user_id: IdHex
 
 
 class NoteModel(BaseModel):
-    success: bool = True | False
-    status: int
-    message: str
+    success: SuccessBool
+    status: StatusInt
+    message: MessageStr
     data: NoteDataModel
-
-    @field_validator("success", "status", "message")
-    def fields_are_not_empty(cls, value: Any) -> Any:
-        if value == "" or value is None:
-            raise ValueError("The field is empty!")
-        else:
-            return value
 
 
 class Note404Model(BaseModel):
