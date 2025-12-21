@@ -3,14 +3,7 @@ from typing import Annotated, Any, Literal
 
 from pydantic import BaseModel, BeforeValidator, Field, field_validator
 
-StatusInt = Annotated[
-    int,
-    Field(
-        ...,
-        pattern=r"^(200|400|401|404|500)$",
-        description="Status must be one of: 200, 400, 401, 404, 500",
-    ),
-]
+StatusInt = Annotated[int, Field(..., description="Status must be one of: 200, 400, 401, 404, 500")]
 
 MessageStr = Annotated[str, Field(..., description="Note status message")]
 
@@ -70,6 +63,14 @@ class NoteModel(BaseModel):
     status: StatusInt
     message: MessageStr
     data: NoteDataModel
+
+    @field_validator("status")
+    @classmethod
+    def validate_status(cls, value: int) -> int:
+        valid_statuses = {200, 400, 401, 404, 500}
+        if value not in valid_statuses:
+            raise ValueError(f"Status must be one of: {sorted(valid_statuses)}")
+        return value
 
 
 class Note404Model(BaseModel):
