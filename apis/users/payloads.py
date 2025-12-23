@@ -22,4 +22,4 @@ class Payloads:
     send_password_reset_link: ClassVar[dict[str, str]] = {"email": "test_user@mail.world"}
     verify_password_reset_token: ClassVar[dict[str, str]] = {"token": ""}
     reset_user_password: ClassVar[dict[str, str]] = {"token": "", "newPassword": ""}
-    chainge_user_password: ClassVar[dict[str, str]] = {"currentPassword": "", "newPassword": ""}
+    change_user_password: ClassVar[dict[str, str]] = {"currentPassword": "", "newPassword": ""}
