@@ -18,13 +18,11 @@ class Notes(Helper):
         self.headers = Headers()
 
     @allure.step("Create a new note")
-    def create_note(self) -> NoteModel:
+    def create_note(self, payload: dict[str, str]) -> NoteModel:
         response = httpx.post(
-            url=self.endpoints.create_note,
-            headers=self.headers.auth,
-            json=self.payloads.create_note,
+            url=self.endpoints.create_note, headers=self.headers.auth, json=payload
         )
-        assert response.status_code == 200, f"Something goes wrong!\n {response.json()}"
+        assert response.status_code == 200, f"Error while creating a note!\n {response.json()}"
         self.attach_response(response.json())
         model = NoteModel(**response.json())
         return model
