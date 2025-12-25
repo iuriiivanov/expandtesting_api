@@ -23,11 +23,11 @@ class TestNotes(BaseTest):
             Payloads.create_note_max_description,
         ],
         ids=[
-            "Create a note with default options",
-            "Create a note with the shortest title length",
-            "Create a note with the shortest description length",
-            "Create a note with the longest title length",
-            "Create a note with the longest description length",
+            "default options",
+            "the shortest title length",
+            "the shortest description length",
+            "the longest title length",
+            "the longest description length",
         ],
     )
     def test_create_note(self, payload: dict[str, str]) -> None:
