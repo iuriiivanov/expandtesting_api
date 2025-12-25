@@ -35,6 +35,7 @@ addopts = [
     "--disable-warnings",
     "--cache-clear",
     "--showlocals",
+    "--full-trace",
     # "--setup-show",
     # "--alluredir=allure-results"
 ]
