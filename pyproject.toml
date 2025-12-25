@@ -35,8 +35,7 @@ addopts = [
     "--disable-warnings",
     "--cache-clear",
     "--showlocals",
-    "--full-trace",
-    # "--setup-show",
+    "--setup-show",
     # "--alluredir=allure-results"
 ]
 markers = [
