@@ -2,8 +2,8 @@ import allure
 import pytest
 import random
 
-from config.base_test import BaseTest
-from apis.notes.payloads import Payloads
+from config import BaseTest
+from apis.notes import Payloads
 
 
 @allure.epic("Notes manipulation")
@@ -12,7 +12,7 @@ class TestNotes(BaseTest):
     """TestNotes Class"""
 
     @pytest.mark.regression
-    @allure.title("Create a new note")
+    @allure.title("Create a new note (positive)")
     @pytest.mark.parametrize(
         "payload",
         [
@@ -43,8 +43,8 @@ class TestNotes(BaseTest):
     @allure.title("Get a note by ID")
     def test_get_note_by_id(self) -> None:
         note_created = self.api_notes.create_note(Payloads.create_note)
-        note_recieved = self.api_notes.get_note_by_id(note_created.data.id)
-        self.api_notes.verify_note_data(note_created.data, note_recieved.data)
+        note_received = self.api_notes.get_note_by_id(note_created.data.id)
+        self.api_notes.verify_note_data(note_created.data, note_received.data)
 
     @pytest.mark.regression
     @allure.title("Get a note by ID (404)")
