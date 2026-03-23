@@ -15,23 +15,23 @@ class Payloads:
         "category": random.choice(["Home", "Work", "Personal"]),  # noqa: S311
     }
     create_note_min_title: ClassVar[dict[str, str]] = {
-        "title": "TITL",
+        "title": "T1$e",
         "description": faker.text(max_nb_chars=1000),
         "category": random.choice(["Home", "Work", "Personal"]),  # noqa: S311
     }
     create_note_min_description: ClassVar[dict[str, str]] = {
         "title": faker.text(max_nb_chars=100),
-        "description": "DESC",
+        "description": "D2#i",
         "category": random.choice(["Home", "Work", "Personal"]),  # noqa: S311
     }
     create_note_max_title: ClassVar[dict[str, str]] = {
-        "title": "Title 100 Title 100 Title 100 Title 100 Title 100 Title 100 Title 100 Title 100 Title 100 Title 100!",
+        "title": "Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the!",
         "description": faker.text(max_nb_chars=1000),
         "category": random.choice(["Home", "Work", "Personal"]),  # noqa: S311
     }
     create_note_max_description: ClassVar[dict[str, str]] = {
         "title": faker.text(max_nb_chars=100),
-        "description": "Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description 1000 Description!!!",
+        "description": "Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the Lorem Ipsum @2 simply dummy text #3 the printing $4+ typesetting industry. Lorem Ipsum has been the!",
         "category": random.choice(["Home", "Work", "Personal"]),  # noqa: S311
     }
     create_note_all_fields_empty: ClassVar[dict[str, str]] = {
