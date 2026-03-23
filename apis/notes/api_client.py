@@ -2,12 +2,18 @@ import random
 
 import allure
 import httpx
-from config.headers import Headers
-from utils.tools import Helper
+from config import Headers
+from utils import Helper
 
-from apis.notes.endpoints import Endpoints
-from apis.notes.models import DeleteNote200Model, Note404Model, NoteDataModel, NoteModel, NotesModel
-from apis.notes.payloads import Payloads
+from apis.notes import (
+    DeleteNote200Model,
+    Endpoints,
+    Note404Model,
+    NoteDataModel,
+    NoteModel,
+    NotesModel,
+    Payloads,
+)
 
 
 class Notes(Helper):
