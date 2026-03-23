@@ -135,8 +135,8 @@ class Notes(Helper):
             ids = []
             for item in notes["data"]:
                 ids.append(item["id"])
-            for id in range(len(ids)):
-                self.delete_note_by_id(ids[id])
+            for note_id in range(len(ids)):
+                self.delete_note_by_id(ids[note_id])
         notes = self.get_all_notes().model_dump()
         assert notes, f"Note list is not empty!\n{notes}"
         self.attach_value(f"IDs of the deleted notes:\n{ids}")
