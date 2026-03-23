@@ -2,7 +2,7 @@ import random
 
 import allure
 import httpx
-from config import Headers
+from config.headers import Headers
 from utils import Helper
 
 from apis.notes import (
