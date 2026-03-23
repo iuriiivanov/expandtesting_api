@@ -13,12 +13,13 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "pysonar>=1.2.1.3951",
     "faker>=38.2.0",
+#    "ruff>=0.15.6",
 ]
 
 [dependency-groups]
 dev = [
     "mypy>=1.18.2",
-    "ruff>=0.14.7",
+    "ruff>=0.15.6",
 ]
 
 [tool.pytest.ini_options]
@@ -144,7 +145,6 @@ exclude = [
     "tests/**",
 ]
 fixable = [
-    "I",  # Import sorting
     "I",  # Import sorting
 ]
 

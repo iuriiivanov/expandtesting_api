@@ -31,8 +31,7 @@ allure-reports/
 # Files
 .env
 .env_dev
-temp.py
-temp.json
+temp.*
 
 # MD files
 CHECKLIST.md
