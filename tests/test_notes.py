@@ -1,6 +1,5 @@
 import allure
 import pytest
-import random
 
 from config import BaseTest
 from apis.notes import Payloads
