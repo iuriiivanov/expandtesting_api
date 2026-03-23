@@ -48,8 +48,8 @@ class TestNotes(BaseTest):
     @pytest.mark.regression
     @allure.title("Get a note by ID (404)")
     def test_get_note_by_id_404(self) -> None:
-        id = self.api_notes.generate_note_id()
-        self.api_notes.get_note_by_id_404(id)
+        note_id = self.api_notes.generate_note_id()
+        self.api_notes.get_note_by_id_404(note_id)
 
     @pytest.mark.regression
     @allure.title("Update an existing note")
@@ -69,15 +69,15 @@ class TestNotes(BaseTest):
     @pytest.mark.regression
     @allure.title("Delete a note by ID")
     def test_delete_note_by_id(self) -> None:
-        id = self.api_notes.get_random_note_id()
-        self.api_notes.delete_note_by_id(id)
-        self.api_notes.get_note_by_id_404(id)
+        note_id = self.api_notes.get_random_note_id()
+        self.api_notes.delete_note_by_id(note_id)
+        self.api_notes.get_note_by_id_404(note_id)
 
     @pytest.mark.regression
     @allure.title("Delete a note by ID (404)")
     def test_delete_note_by_id_404(self) -> None:
-        id = self.api_notes.generate_note_id()
-        self.api_notes.delete_note_by_id_404(id)
+        note_id = self.api_notes.generate_note_id()
+        self.api_notes.delete_note_by_id_404(note_id)
 
     @pytest.mark.regression
     @allure.title("Delete all note")
