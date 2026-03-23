@@ -2,7 +2,7 @@ from typing import Any
 
 from config.data_types import (
     CategoryType,
-    DatetimeIso,
+    DateTimeIso,
     DescriptionStr,
     IdHex,
     MessageStr,
@@ -18,8 +18,8 @@ class NoteDataModel(BaseModel):
     title: TitleStr
     description: DescriptionStr
     completed: SuccessBool
-    created_at: DatetimeIso
-    updated_at: DatetimeIso
+    created_at: DateTimeIso
+    updated_at: DateTimeIso
     category: CategoryType
     user_id: IdHex
 
