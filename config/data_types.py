@@ -35,7 +35,7 @@ DescriptionStr = Annotated[
     ),
 ]
 
-DatetimeIso = Annotated[
+DateTimeIso = Annotated[
     datetime,
     Field(..., description="Timestamp must be in ISO 8601 format"),
     BeforeValidator(lambda x: datetime.fromisoformat(x) if isinstance(x, str) else x),
