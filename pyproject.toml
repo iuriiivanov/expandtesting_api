@@ -6,20 +6,18 @@ authors = [{name = "Tester", email = "tester@example.com"}]
 requires-python = ">=3.13"
 
 dependencies = [
-    "pytest>=7.0.0",
-    "httpx>=0.25.0",
+    "pytest>=9.0.3",
     "pydantic[email]>=2.0.0",
-    "allure-pytest>=2.13.0",
-    "python-dotenv>=1.0.0",
-    "pysonar>=1.2.1.3951",
-    "faker>=38.2.0",
-    "ruff>=0.15.6",
+    "allure-pytest>=2.15.3",
+    "python-dotenv>=1.2.2",
+    "pysonar>=1.4.0.4676",
+    "faker>=40.13.0",
 ]
 
 [dependency-groups]
 dev = [
-    "mypy>=1.18.2",
-    "ruff>=0.15.6",
+    "mypy>=1.20.0",
+    "ruff>=0.15.10",
 ]
 
 [tool.pytest.ini_options]
