@@ -1,14 +1,14 @@
-# Демонстрационный проект по тестированию API
+# API testing demo project on the website https://practice.expandtesting.com/
 
 ## Swagger
-
 https://practice.expandtesting.com/notes/api/api-docs/#/
 
-## Условия для запуска тестов
+## Run tests
+_The project is under development!_
 
-Проект находится в стадии доработки.
-На данном этапе для запуска тестов необходимо в корне проекта создать файл .env с содержимым вида API_DEFAULT_TOKEN="<TOKEN>". На данном этапе <TOKEN> можно получить, создав вручную нового пользователя при помощи Swagger.
+At this stage, to prepare for running tests, you need to create the .env file with your credentials in the project root using the .env.TEMPLATE and Swagger (step 3).
 
-## Запуск тестов
-
-`uv run pytest`
+1. Clone the repository.
+2. Go to the root directory of the project.
+3. Create the .env file.
+4. Run the command `uv run pytest` in the terminal.
