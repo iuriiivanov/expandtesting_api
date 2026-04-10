@@ -33,6 +33,9 @@ allure-reports/
 .env_dev
 temp.*
 
+# .gitignore
+.gitignore
+
 # MD files
 CHECKLIST.md
 DOCUMENTATION.md
