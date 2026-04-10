@@ -13,7 +13,7 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "pysonar>=1.2.1.3951",
     "faker>=38.2.0",
-#    "ruff>=0.15.6",
+    "ruff>=0.15.6",
 ]
 
 [dependency-groups]
@@ -36,8 +36,6 @@ addopts = [
     "--disable-warnings",
     "--cache-clear",
     "--showlocals",
-    # "--setup-show",
-    # "--alluredir=allure-results"
 ]
 markers = [
     "smoke: marks tests as smoke tests",
@@ -80,39 +78,36 @@ src = ["src"]
 [tool.ruff.lint]
 preview = true
 select = [
-    "UP",  # pyupgrade
-    "I",  # isort
-    "E",  # flake8-errors
-    # "E4",  # pycodestyle multiple-imports errors
-    # "E7",  # pycodestyle errors
-    # "E902",  # pycodestyle io-error
-    "F",  # Pyflakes warnings
-    "W",  # flake8-warnings
-    "F",  # flake8-pyflakes
-    "B",  # flake8-bugbear
-    "C4",  # flake8-comprehensions
-    "S",  # flake8-bandit
-    "BLE",  # flake8-blind-except
-    "T20",  # flake8-print
-    "T10",  # flake8-debugger
-    "PT",  # flake8-pytest-style
-    "RUF",  # Ruff
-    "DTZ",  # flake8-datetimez
-    "ERA",  # eradicate
-    "FURB",  # refurb
+    "UP",
+    "I",
+    "E",
+    "F",
+    "W",
+    "F",
+    "B",
+    "C4",
+    "S",
+    "BLE",
+    "T20",
+    "T10",
+    "PT",
+    "RUF",
+    "DTZ",
+    "ERA",
+    "FURB",
 ]
 ignore = [
-    "C408",  # Unnecessary {kind}() call (rewrite as a literal)
-    "D100",  # Missing docstring in public module
-    "D101",  # Missing docstring in public class
-    "D102",  # Missing docstring in public method
-    "D103",  # Missing docstring in public function
-    "RUF001",  # String contains ambiguous {}. Did you mean {}?
-    "RUF002",  # Docstring contains ambiguous {}. Did you mean {}?
-    "RUF003",  # Comment contains ambiguous {}. Did you mean {}?
-    "S110",  # try-except-pass detected, consider logging the exception
-    "E501",  # Line too long ({width} > {limit})
-    "S101",  # Use of assert detected
+    "C408",
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "RUF001",
+    "RUF002",
+    "RUF003",
+    "S110",
+    "E501",
+    "S101",
 ]
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 exclude = [
@@ -145,7 +140,7 @@ exclude = [
     "tests/**",
 ]
 fixable = [
-    "I",  # Import sorting
+    "I",
 ]
 
 [tool.ruff.format]
