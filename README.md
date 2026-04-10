@@ -1,4 +1,5 @@
-# API testing demo project on the website https://practice.expandtesting.com/
+# API testing demo project for
+# https://practice.expandtesting.com/
 
 ## Swagger
 https://practice.expandtesting.com/notes/api/api-docs/#/
