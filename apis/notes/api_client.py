@@ -1,7 +1,7 @@
 import random
 
 import allure
-import httpx
+import requests
 from config.headers import Headers
 from utils import Helper
 
@@ -25,7 +25,7 @@ class Notes(Helper):
 
     @allure.step("Create a new note")
     def create_note(self, payload: dict[str, str]) -> NoteModel:
-        response = httpx.post(
+        response = requests.post(
             url=self.endpoints.create_note, headers=self.headers.auth, json=payload
         )
         assert response.status_code == 200, f"Error while creating a note!\n {response.json()}"
@@ -35,7 +35,7 @@ class Notes(Helper):
 
     @allure.step("Get all notes")
     def get_all_notes(self) -> NotesModel:
-        response = httpx.get(url=self.endpoints.get_all_notes, headers=self.headers.auth)
+        response = requests.get(url=self.endpoints.get_all_notes, headers=self.headers.auth)
         assert response.status_code == 200, f"Something goes wrong!\n {response.json()}"
         self.attach_response(response.json())
         model = NotesModel(**response.json())
@@ -43,7 +43,7 @@ class Notes(Helper):
 
     @allure.step("Get a note by ID")
     def get_note_by_id(self, note_id: str) -> NoteModel:
-        response = httpx.get(url=self.endpoints.get_note_by_id(note_id), headers=self.headers.auth)
+        response = requests.get(url=self.endpoints.get_note_by_id(note_id), headers=self.headers.auth)
         assert response.status_code == 200, f"Something goes wrong!\n {response.json()}"
         self.attach_response(response.json())
         model = NoteModel(**response.json())
@@ -51,7 +51,7 @@ class Notes(Helper):
 
     @allure.step("Get a note by ID (404)")
     def get_note_by_id_404(self, note_id: str) -> Note404Model:
-        response = httpx.get(url=self.endpoints.get_note_by_id(note_id), headers=self.headers.auth)
+        response = requests.get(url=self.endpoints.get_note_by_id(note_id), headers=self.headers.auth)
         assert response.status_code == 404, f"Something goes wrong!\n {response.json()}"
         self.attach_response(response.json())
         model = Note404Model(**response.json())
@@ -59,7 +59,7 @@ class Notes(Helper):
 
     @allure.step("Update an existing note")
     def update_note(self, note_id: str) -> NoteModel:
-        response = httpx.put(
+        response = requests.put(
             url=self.endpoints.update_existing_note(note_id),
             headers=self.headers.auth,
             json=self.payloads.update_existing_note,
@@ -71,7 +71,7 @@ class Notes(Helper):
 
     @allure.step("Change the completed status to True")
     def change_completed_status_to_true(self, note_id: str) -> None:
-        response = httpx.patch(
+        response = requests.patch(
             url=self.endpoints.update_completed_status_of_note(note_id),
             headers=self.headers.auth,
             json=self.payloads.change_completed_status_to_true,
@@ -83,7 +83,7 @@ class Notes(Helper):
 
     @allure.step("Change the completed status to False")
     def change_completed_status_to_false(self, note_id: str) -> None:
-        response = httpx.patch(
+        response = requests.patch(
             url=self.endpoints.update_completed_status_of_note(note_id),
             headers=self.headers.auth,
             json=self.payloads.change_completed_status_to_false,
@@ -95,7 +95,7 @@ class Notes(Helper):
 
     @allure.step("Delete a note by ID")
     def delete_note_by_id(self, note_id: str) -> DeleteNote200Model:
-        response = httpx.delete(url=self.endpoints.delete_note_by_id(note_id), headers=self.headers.auth)
+        response = requests.delete(url=self.endpoints.delete_note_by_id(note_id), headers=self.headers.auth)
         assert response.status_code == 200, f"Something goes wrong!\n {response.json()}"
         self.attach_response(response.json())
         model = DeleteNote200Model(**response.json())
@@ -103,7 +103,7 @@ class Notes(Helper):
 
     @allure.step("Delete a note by ID (no notes available)")
     def delete_note_by_id_404(self, note_id: str) -> Note404Model:
-        response = httpx.delete(url=self.endpoints.delete_note_by_id(note_id), headers=self.headers.auth)
+        response = requests.delete(url=self.endpoints.delete_note_by_id(note_id), headers=self.headers.auth)
         assert response.status_code == 404, f"Something goes wrong!\n {response.json()}"
         self.attach_response(response.json())
         model = Note404Model(**response.json())
