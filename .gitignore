@@ -1,0 +1,44 @@
+# IDEA files
+.idea/
+
+# VS Code files
+.vscode/
+
+# SonarQube files
+.sonar/
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+venv/
+
+# Byte-compiled / optimized / DLL / files
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Allure files
+allure-results/
+allure-reports/
+
+# Files
+.env
+.env_dev
+temp.*
+
+# .gitignore
+.gitignore
+
+# MD files
+CHECKLIST.md
+DOCUMENTATION.md
+QUICK_START.md
+SUMMARY.md
+WARP.md
