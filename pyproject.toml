@@ -7,12 +7,14 @@ requires-python = ">=3.13"
 
 dependencies = [
     "requests >= 2.33.1",
+    "types-requests >= 2.33.0.20260503",
     "pytest>=9.0.3",
     "pydantic[email]>=2.13.3",
     "allure-pytest>=2.16.0",
     "python-dotenv>=1.2.2",
     "pysonar>=1.4.0.4676",
     "faker>=40.15.0",
+    "allure-python-commons>=2.16.0",
 ]
 
 [dependency-groups]
